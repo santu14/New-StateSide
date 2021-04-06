@@ -25,17 +25,17 @@ mongoose
 
 
 
+ 
+ 
+ 
+ //middlewares
+ app.use(bodyParser.json());
+ app.use(cookieParser());
+ app.use(cors());
+ 
  if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
   }
-
-
-
-//middlewares
-app.use(bodyParser.json());
-app.use(cookieParser());
-app.use(cors());
-
 //routes middleware
 app.use(routes);
 
