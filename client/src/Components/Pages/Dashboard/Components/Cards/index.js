@@ -128,25 +128,25 @@ export default function PlanTrip(props) {
   const [statesBeenTo, setStatesBeenTo] = useState(0);
 
   
-  const [trips, setTrips] = useState([]);
+
   const [futureTrips, setFutureTrips] = useState([]);
 
-  useEffect(() => {
-    setTrips(props.trips);
-  }, [props.trips]);
+  // useEffect(() => {
+  //   setTrips(props.trips);
+  // }, []);
 
   useEffect(() => {
-    console.log("trips: ", trips);
-    setStatesBeenTo(countStatesBeenTo(trips));
-    if(trips){
+    console.log("trips: ", props.trips);
+    setStatesBeenTo(countStatesBeenTo(props.trips));
+    if(props.trips){
       console.log("here");
       setFutureTrips(
-        trips.filter((trip) => {
+        props.trips.filter((trip) => {
           return trip.current.includes("future");
         })
       );
     }
-  }, [trips]);
+  }, [props.trips]);
 
   useEffect(() => {
     console.log("future trips: ", futureTrips);

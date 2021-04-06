@@ -7,18 +7,19 @@ const AuthState = ({ children }) => {
  
 const [state, dispatch] = useReducer(isAuthReducer, {isAuth: undefined})
 const [userID, setUserID] = useState('')
-if(state.isAuth === true){
 
-  const encodedID = Cookies.getJSON("user");
-  const decodeArr = encodedID.split('"');
-  setUserID(decodeArr[1])
-}
 
 const checkAuth = () => {
   API.checkAuth().then((data) => {
     console.log("checkAuth func: ", data.data);
     dispatch({type: data.data})
   })
+  if(state.isAuth === true){
+
+    const encodedID = Cookies.getJSON("user");
+    const decodeArr = encodedID.split('"');
+    setUserID(decodeArr[1])
+  }
 }
 useEffect(() => {
   
