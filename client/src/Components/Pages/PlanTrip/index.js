@@ -52,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function PlanTrip() {
   const {userID} = useContext(IsAuthContext);
+  console.log("plan trip id:", userID);
   const classes = useStyles();
   const theme = createMuiTheme({
     palette: {
@@ -151,7 +152,11 @@ export default function PlanTrip() {
 
       setTripState({ ...tripState, current: "future" });
     }
-    API.saveTrip(userID, { ...tripState, ...coordinatesState });
+    API.saveTrip(userID, { ...tripState, ...coordinatesState }).then(()=>{
+      console.log("trip Saved");
+    }).catch((err)=>{
+      console.log(err);
+    });
     console.log("submit");
   };
 

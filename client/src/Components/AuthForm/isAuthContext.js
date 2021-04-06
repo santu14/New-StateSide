@@ -14,17 +14,20 @@ const checkAuth = () => {
     console.log("checkAuth func: ", data.data);
     dispatch({type: data.data})
   })
+  
+}
+useEffect(() => {
+  
+ checkAuth()
+}, [])
+useEffect(() => {
   if(state.isAuth === true){
 
     const encodedID = Cookies.getJSON("user");
     const decodeArr = encodedID.split('"');
     setUserID(decodeArr[1])
   }
-}
-useEffect(() => {
-  
- checkAuth()
-}, [])
+}, [state])
 
   return (
     <IsAuthContext.Provider value={{state, checkAuth, userID}}>
