@@ -26,13 +26,11 @@ mongoose
 
 
  if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('./client/build'));
+    app.use(express.static('client/build'));
   }
 
 
- app.get("/", function(req, res) {
-    res.json(path.join(__dirname, "./client/public/index.html"));
-  });
+
 //middlewares
 app.use(bodyParser.json());
 app.use(cookieParser());
