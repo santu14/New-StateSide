@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import clsx from "clsx";
 import {
   createMuiTheme,
@@ -6,28 +6,25 @@ import {
   ThemeProvider,
 } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-// import Drawer from "@material-ui/core/Drawer";
+import Drawer from "@material-ui/core/Drawer";
 import Box from "@material-ui/core/Box";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-// import List from "@material-ui/core/List";
+import List from "@material-ui/core/List";
 import Typography from "@material-ui/core/Typography";
-// import Divider from "@material-ui/core/Divider";
+import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import MenuIcon from "@material-ui/icons/Menu";
-// import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-// import NotificationsIcon from "@material-ui/icons/Notifications";
-// import { mainListItems, secondaryListItems } from "../../Components/ListItems";
-// import Cards from "./Components/Cards";
-// import ButtonCards from "./Components/Cards/buttons";
-// import Copyright from "../../Components/Copyright";
-// import Charts from "./Components/Cards/";
-// import Map from "./Components/Map";
-// import Footer from "../../Components/Footer";
-import Cookies from 'js-cookie';
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import { mainListItems, secondaryListItems } from "../../ListItems";
+import ButtonCards from "./Components/Cards/buttons";
+import Charts from "./Components/Cards/";
+import Map from "./Components/Map";
+import Footer from "../../Footer";
+import Cookies from "js-cookie";
 
 import API from "../../../utils/API";
 
@@ -128,29 +125,36 @@ export default function Dashboard() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+ 
   const theme = createMuiTheme({
     palette: {
       type: "dark",
     },
   });
+  const initialUserData = {
+    email: " ",
+    firstName: " ",
+    lastname: " ",
+    trips: [ ]
+  }
+  const [tripsData, setTripsData] = useState([]);
+  const [userData, setUserData] = useState(initialUserData);
 
-  // const [tripsData, setTripsData] = useState([]);
- 
+  const encodedID = Cookies.getJSON("user");
+  const decodeArr = encodedID.split('"');
+  const userID = decodeArr[1];
 
-  const userID = Cookies.getJSON('user');
   console.log("ID: ", userID);
   // ---------- Use Effect hooks -------------
   useEffect(() => {
     console.log("ID: ", userID);
-    API.getUser(userID.toString()).then((user)=>{
-      console.log("here:", user.data.trips);
-      
-      
-      // setTripsData(user.data.trips)
-    })
-  }, [])
-  
+    API.getUser(userID.toString()).then((user) => {
+      console.log("here:", user.data);
+
+      setUserData(user.data);
+      setTripsData(user.data.trips);
+    });
+  }, []);
 
   // ---------- Check cognito user and then get db user from cognito ID -------------
   //  API.getUser()
@@ -183,11 +187,11 @@ export default function Dashboard() {
                 noWrap
                 className={classes.title}
               >
-                {/* Welcome, {globalUserData.email}! */}
+                Welcome, {userData.firstName}!
               </Typography>
             </Toolbar>
           </AppBar>
-          {/* <Drawer
+          <Drawer
             variant="permanent"
             classes={{
               paper: clsx(
@@ -206,30 +210,30 @@ export default function Dashboard() {
             <List>{mainListItems}</List>
             <Divider />
             <List>{secondaryListItems}</List>
-          </Drawer> */}
+          </Drawer>
           <main className={classes.content}>
             <div className={classes.appBarSpacer} />
             <Container maxWidth="lg" className={classes.container}>
               <Grid container spacing={3}>
                 <Grid item xs={12} md={8} lg={8}>
                   <Paper className={classes.paper}>
-                    {/* <Map trips={tripsData} /> */}
+                    <Map trips={tripsData} />
                   </Paper>
                 </Grid>
                 <Grid item xs={12} md={4} lg={4}>
-                  {/* <Charts trips={tripsData} /> */}
+                  <Charts trips={tripsData} />
                 </Grid>
               </Grid>
 
               <Grid container spacing={3}>
                 <Grid item xs={12}>
                   <Paper className={classes.paper}>
-                    {/* <ButtonCards /> */}
+                    <ButtonCards />
                   </Paper>
                 </Grid>
               </Grid>
               <Box pt={4} pb={4}>
-                {/* <Footer /> */}
+                <Footer />
               </Box>
             </Container>
           </main>

@@ -1,27 +1,23 @@
 import React, { useEffect, useState, useContext } from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Grid from "@material-ui/core/Grid";
 
-import AppBar from "@material-ui/core/AppBar";
-import Button from "@material-ui/core/Button";
-import CameraIcon from "@material-ui/icons/PhotoCamera";
+
+
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
+
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 
-import Toolbar from "@material-ui/core/Toolbar";
-import CountUp from "react-countup";
+
 import moment from "moment"
 import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
+
 import Link from "@material-ui/core/Link";
-import TripCard from "./TripCard";
-import CardInfo from "./cards";
+
 import { Typography } from "@material-ui/core";
-import API from "../../../../utils/API.js";
+
 import ProgressCircle from "../../Components/ProgressCircle";
-import { GlobalUserState } from "../../../../Components/globalUserState.js";
+
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -131,14 +127,13 @@ export default function PlanTrip(props) {
 
   const [statesBeenTo, setStatesBeenTo] = useState(0);
 
-  const [globalUserData, setGlobalUserData] = useContext(GlobalUserState);
+  
   const [trips, setTrips] = useState([]);
   const [futureTrips, setFutureTrips] = useState([]);
 
   useEffect(() => {
-    console.log("global state: ", globalUserData);
-    setTrips(globalUserData.trips);
-  }, [globalUserData]);
+    setTrips(props.trips);
+  }, [props.trips]);
 
   useEffect(() => {
     console.log("trips: ", trips);

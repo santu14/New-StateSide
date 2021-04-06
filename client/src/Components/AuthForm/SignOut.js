@@ -1,6 +1,8 @@
 import React, {  useContext } from "react";
 import Button from "@material-ui/core/Button";
 import API from '../../utils/API'
+import ListItemText from "@material-ui/core/ListItemText";
+
 import { IsAuthContext } from "./isAuthContext";
 
 const SignOut = () => {
@@ -15,15 +17,11 @@ const SignOut = () => {
     })
 }
   return (
-    
-      <Button
-        color="secondary"
-        type="submit"
-        variant="contained"
-        onClick={submitSignOut}
-      >
-        Sign out
-      </Button>
+    <ListItemText
+        primary='Logout'
+        onClick={submitSignOut}>
+    </ListItemText>
+      
    
   );
 };
