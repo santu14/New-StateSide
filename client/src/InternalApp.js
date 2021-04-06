@@ -4,7 +4,7 @@ import NoMatch from "./Components/Pages/NoMatch";
 import PlanTrip from "./Components/Pages/PlanTrip";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import PastTrip from "./Pages/PastTrip";
-// import CurrentTrip from "./Pages/CurrentTrip";
+import CurrentTrip from "./Components/Pages/CurrentTrip";
 
 
 
@@ -24,10 +24,10 @@ function InternalApp() {
                 </Route>
                 {/* <Route exact path="/pasttrip">
                   <PastTrip />
-                </Route>
+                </Route> */}
                 <Route exact path="/currenttrip">
                   <CurrentTrip />
-                </Route> */}
+                </Route>
                 <Route component={NoMatch} />
               </Switch>
          

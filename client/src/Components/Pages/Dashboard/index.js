@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useState } from "react";
 import clsx from "clsx";
 import {
   createMuiTheme,
@@ -25,7 +25,7 @@ import Charts from "./Components/Cards/";
 import Map from "./Components/Map";
 import Footer from "../../Footer";
 import Cookies from "js-cookie";
-import { IsAuthContext } from "../../AuthForm/isAuthContext";
+
 
 import API from "../../../utils/API";
 
@@ -140,9 +140,11 @@ export default function Dashboard() {
   }
   const [tripsData, setTripsData] = useState([]);
   const [userData, setUserData] = useState(initialUserData);
-  const {userID} = useContext(IsAuthContext);
+ 
 
-  
+  const encodedID = Cookies.getJSON("user");
+  const decodeArr = encodedID.split('"');
+  const userID = decodeArr[1];
 
   console.log("ID: ", userID);
   // ---------- Use Effect hooks -------------
