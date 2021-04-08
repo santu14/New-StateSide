@@ -34,7 +34,7 @@ const SignIn = (props) => {
   return (
     <div>
       <Typography variant="h5">Sign In</Typography>
-      <form noValidate>
+      <form noValidate  className={props.classes.form}>
         {
         props.errorHelper !== "" && 
         <Alert severity="error">{props.errorHelper}</Alert>
@@ -71,6 +71,7 @@ const SignIn = (props) => {
           type="submit"
           fullWidth
           variant="contained"
+          className={props.classes.submit}
           onClick={props.submit}
         >
           Sign In

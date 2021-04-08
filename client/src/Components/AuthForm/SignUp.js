@@ -41,7 +41,7 @@ const SignUp = (props) => {
   return (
     <div>
       <Typography variant="h5">Sign Up</Typography>
-      <form noValidate>
+      <form noValidate className={props.classes.form}>
         <Grid>
           {props.errorHelper !== "" && (
             <Alert severity="error">{props.errorHelper}</Alert>
@@ -116,6 +116,7 @@ const SignUp = (props) => {
           type="submit"
           fullWidth
           variant="contained"
+          className={props.classes.submit}
           onClick={props.submit}
         >
           Sign Up

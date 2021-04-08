@@ -2,9 +2,39 @@ import React, { useState, useContext, useEffect } from "react";
 import API from "../../utils/API";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
+import { makeStyles, ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
 import { IsAuthContext } from "./isAuthContext";
-
+const useStyles = makeStyles((theme) => ({
+  fontcolor: {
+    color: "#BB86FC",
+    "&:hover": {
+      color: "#BB90FF",
+    },
+  },
+  root: {
+    height: "100vh",
+  },
+  form: {
+    width: "100%",
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+    backgroundColor: "#BB86FC",
+    "&:hover": {
+      backgroundColor: "#BB90FF",
+    },
+  },
+}));
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#BB86FC",
+    },
+    type: "dark",
+  },
+});
 const AuthForm = (props) => {
 
   
@@ -96,14 +126,18 @@ const AuthForm = (props) => {
              
         });
     
+    } else {
+      setFormType("signIn")
     }
    
   };
  
   const { error, email, password, passwordConfirm } = helperText;
-  
+  const classes = useStyles();
   return (
     <div>
+      <ThemeProvider theme={theme}>
+
       {formType === "signIn" && (
         <SignIn
           handleInputChange={handleInputChange}
@@ -113,6 +147,7 @@ const AuthForm = (props) => {
           errorHelper={error}
           emailHelper={email}
           passwordHelper={password}
+          classes={classes}
 
         />
       )}
@@ -126,9 +161,11 @@ const AuthForm = (props) => {
           emailHelper={email}
           passwordHelper={password}
           passwordConfirmHelper={passwordConfirm}
+          classes={classes}
 
         />
       )}
+      </ThemeProvider>
     </div>
   );
 };
