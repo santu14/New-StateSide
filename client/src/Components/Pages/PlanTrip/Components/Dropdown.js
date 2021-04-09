@@ -1,33 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import locations from "../../../../locations.json";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import LocationOnIcon from "@material-ui/icons/LocationOn";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
+
 
 const Dropdown = (props) => {
-  const array = locations;
+  
 
-  const [value, setValue] = useState("");
-
-  const renderCities = () => {
-    if (value.length > 1) {
-      return array.filter((city) => city.city.includes(value));
-    }
-
-    return [];
-  };
-
-  const useStyles = makeStyles((theme) => ({
-    icon: {
-      color: theme.palette.text.secondary,
-      marginRight: theme.spacing(2),
-    },
-  }));
-
-  const classes = useStyles();
+  
+  
   return (
     <div>
       <Autocomplete
@@ -61,7 +42,6 @@ const Dropdown = (props) => {
             // </Grid>
           );
         }}
-        style={{ width: 225 }}
         renderInput={(params) => (
           <TextField {...params} label='Destination' variant='outlined' />
         )}

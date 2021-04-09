@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import parse from "autosuggest-highlight/parse";
 import throttle from "lodash/throttle";
-import locations from '../../../../locations.json';
+
 
 function loadScript(src, position, id) {
   if (!position) {
@@ -61,7 +61,7 @@ export default function GoogleMaps() {
 
   useEffect(() => {
     let active = true;
-    console.log(value);
+    // console.log(value);
 
     if (!autocompleteService.current && window.google) {
       autocompleteService.current = new window.google.maps.places.AutocompleteService();

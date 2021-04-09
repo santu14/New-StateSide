@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import SpeakerNotesIcon from "@material-ui/icons/SpeakerNotes";
 import CardTravelIcon from "@material-ui/icons/CardTravel";
 import EventIcon from "@material-ui/icons/Event";
-import { Route, Redirect, Link } from "react-router-dom";
+import { Route } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme) => ({

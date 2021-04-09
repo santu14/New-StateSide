@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React from "react";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -8,7 +8,7 @@ import EventIcon from "@material-ui/icons/Event";
 import CardTravelIcon from "@material-ui/icons/CardTravel";
 import SpeakerNotesIcon from "@material-ui/icons/SpeakerNotes";
 import SignOut from "../AuthForm/SignOut"
-import { Route, Redirect, Link } from "react-router-dom";
+import { Route} from "react-router-dom";
 
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 export const mainListItems = (

@@ -1,5 +1,4 @@
 
-import LoginPage from "./Components/Pages/LoginPage"
 import AuthState from "./Components/AuthForm/isAuthContext";
 import AuthWrapper from "./AuthWrapper";
 
@@ -8,7 +7,6 @@ function App() {
     <div className="App">
       <AuthState>
         <AuthWrapper/>
-     
       </AuthState>
     </div>
   );

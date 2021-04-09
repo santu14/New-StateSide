@@ -172,10 +172,6 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
   },
-  center: {
-    display: "flex",
-    justifyContent: "center",
-  },
  
 }));
 
@@ -199,7 +195,7 @@ export default function Dashboard() {
   const [trips, setTrips] = useState([]);
   const [pastTrips, setPastTrips] = useState({});
   const [selectedTrip, setSelectedTrip] = useState({});
-  const [firstSelected, setFirstSelected] = useState({});
+  
 
 
   // ---------- Use Effect hooks -------------
@@ -209,14 +205,14 @@ export default function Dashboard() {
 
   useEffect(() => {
     API.getUser(userID).then((user) => {
-      console.log("current trip userid:", userID);
+      // console.log("current trip userid:", userID);
       setTrips(user.data.trips);
     });
   }, []);
   
 
   useEffect(() => {
-    console.log("trips: ", trips);
+    // console.log("trips: ", trips);
     setPastTrips(
       trips.filter((trip) => {
         return trip.current.includes("past");
@@ -225,7 +221,7 @@ export default function Dashboard() {
   }, [trips]);
 
   useEffect(() => {
-    console.log("past trips: ", pastTrips);
+    // console.log("past trips: ", pastTrips);
     if(pastTrips.length >= 1){
 
       getSelectedTrip(pastTrips[0]._id);
@@ -235,9 +231,9 @@ export default function Dashboard() {
     }
   }, [pastTrips]);
 
-  useEffect(() => {
-    console.log("selected trip: ", selectedTrip);
-  }, [selectedTrip]);
+  // useEffect(() => {
+  //   // console.log("selected trip: ", selectedTrip);
+  // }, [selectedTrip]);
 
   const getSelectedTrip = (id) => {
     API.getTrip(id).then(({ data }) => {
@@ -245,7 +241,7 @@ export default function Dashboard() {
     });
   };
   const handleOnClickForTrip = (id) => {
-    console.log(id);
+    // console.log(id);
     getSelectedTrip(id);
   };
   //  API.getUser()

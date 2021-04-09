@@ -11,7 +11,7 @@ const [userID, setUserID] = useState('')
 
 const checkAuth = () => {
   API.checkAuth().then((data) => {
-    console.log("checkAuth func: ", data.data);
+    // console.log("checkAuth func: ", data.data);
     dispatch({type: data.data})
   })
   

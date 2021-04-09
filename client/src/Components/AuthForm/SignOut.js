@@ -1,5 +1,4 @@
 import React, {  useContext } from "react";
-import Button from "@material-ui/core/Button";
 import API from '../../utils/API'
 import ListItemText from "@material-ui/core/ListItemText";
 
@@ -10,7 +9,7 @@ const SignOut = () => {
 
   const submitSignOut = (e) => {
     API.signOut().then((res) => {
-        console.log(res);
+        // console.log(res);
         
     }).then(() => {
       checkAuth();

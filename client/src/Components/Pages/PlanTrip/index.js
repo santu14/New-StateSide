@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function PlanTrip() {
   const {userID} = useContext(IsAuthContext);
-  console.log("plan trip id:", userID);
+  // console.log("plan trip id:", userID);
   const classes = useStyles();
   const theme = createMuiTheme({
     palette: {
@@ -99,7 +99,7 @@ export default function PlanTrip() {
     Geocode.fromAddress(`${tripState.city}, ${tripState.state}`).then(
       (response) => {
         const { lat, lng } = response.results[0].geometry.location;
-        console.log(lat, lng);
+        // console.log(lat, lng);
         setCoordinates({ lat: lat, long: lng });
       },
       (error) => {
@@ -134,7 +134,7 @@ export default function PlanTrip() {
     } else {
       setTripState({ ...tripState, city: val.city, state: val.state });
 
-      console.log(tripState);
+      // console.log(tripState);
     }
   };
 
@@ -145,22 +145,22 @@ export default function PlanTrip() {
   // ---------- Submit button handler -------------
   const handleSubmit = () => {
     if(moment(tripState.departure).isBefore(now) && moment(tripState.return).isAfter(now) ){
-      console.log(tripState.departure, moment(tripState.departure).isBefore(now));
+      // console.log(tripState.departure, moment(tripState.departure).isBefore(now));
       setTripState({ ...tripState, current: "current" });
     } else if(moment(tripState.departure).isAfter(now)){
-      console.log(tripState.departure);
-
+      // console.log(tripState.departure);
+// 
       setTripState({ ...tripState, current: "future" });
     }
     API.saveTrip(userID, { ...tripState, ...coordinatesState }).then(()=>{
-      console.log("trip Saved");
+      // console.log("trip Saved");
     }).catch((err)=>{
-      console.log(err);
+      // console.log(err);
     });
-    console.log("submit");
+    // console.log("submit");
   };
 
-  console.log(tripState, userID);
+  // console.log(tripState, userID);
 
   return (
     <ThemeProvider theme={theme}>

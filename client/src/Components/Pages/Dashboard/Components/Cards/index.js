@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState} from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
 
@@ -136,10 +136,10 @@ export default function PlanTrip(props) {
   // }, []);
 
   useEffect(() => {
-    console.log("trips: ", props.trips);
+    // console.log("trips: ", props.trips);
     setStatesBeenTo(countStatesBeenTo(props.trips));
     if(props.trips){
-      console.log("here");
+      // console.log("here");
       setFutureTrips(
         props.trips.filter((trip) => {
           return trip.current.includes("future");
@@ -149,7 +149,7 @@ export default function PlanTrip(props) {
   }, [props.trips]);
 
   useEffect(() => {
-    console.log("future trips: ", futureTrips);
+    // console.log("future trips: ", futureTrips);
     
   }, [futureTrips]);
   const countStatesBeenTo = (placesArray) => {
@@ -160,7 +160,7 @@ export default function PlanTrip(props) {
           count++;
         }
       });
-      console.log((count / 50) * 100);
+      // console.log((count / 50) * 100);
       return count;
     }
   };

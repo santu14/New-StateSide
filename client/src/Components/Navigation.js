@@ -1,10 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import HomeIcon from "@material-ui/icons/Home";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import { Route, Redirect, Link } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   link: {

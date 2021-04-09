@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import Grid from "@material-ui/core/Grid";
-import { Route, Redirect, Link } from "react-router-dom";
+import { Route } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   styling: {
     margin: theme.spacing(6),

@@ -26,7 +26,6 @@ import Map from "./Components/Map";
 import Footer from "../../Footer";
 import Cookies from "js-cookie";
 
-
 import API from "../../../utils/API";
 
 const drawerWidth = 240;
@@ -126,7 +125,7 @@ export default function Dashboard() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
- 
+
   const theme = createMuiTheme({
     palette: {
       type: "dark",
@@ -136,30 +135,24 @@ export default function Dashboard() {
     email: " ",
     firstName: " ",
     lastname: " ",
-    trips: [ ]
-  }
+    trips: [],
+  };
   const [tripsData, setTripsData] = useState([]);
   const [userData, setUserData] = useState(initialUserData);
- 
 
   const encodedID = Cookies.getJSON("user");
   const decodeArr = encodedID.split('"');
   const userID = decodeArr[1];
 
-  console.log("ID: ", userID);
   // ---------- Use Effect hooks -------------
   useEffect(() => {
-    console.log("ID: ", userID);
+ 
     API.getUser(userID.toString()).then((user) => {
-      console.log("here:", user.data);
-
       setUserData(user.data);
       setTripsData(user.data.trips);
     });
   }, []);
 
-  // ---------- Check cognito user and then get db user from cognito ID -------------
-  //  API.getUser()
   return (
     <ThemeProvider theme={theme}>
       <Paper>

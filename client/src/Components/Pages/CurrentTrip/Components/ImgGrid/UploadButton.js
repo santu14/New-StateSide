@@ -32,13 +32,13 @@ export default function Dropzone(props) {
 
   const handleSave = (files) => {
     //Saving files to state for further use and closing Modal.
-    console.log(files[0]);
+    // console.log(files[0]);
     setFile(files);
     setOpen(false);
     // Upload our image to s-3 and store in db
     uploadFile(files[0], config)
       .then((data) => {
-        console.log(data.location);
+        // console.log(data.location);
         API.savePhoto(props.id, { photo: data.location }).then(() => {
           props.reset();
         });

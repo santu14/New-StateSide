@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   withScriptjs,
   withGoogleMap,
@@ -10,18 +10,14 @@ import {
 const CustomSkinMap = withScriptjs(
   withGoogleMap((props) => {
     const [position, setPosition] = useState({ lat: 38.0902, lng: -95.7129 });
-    const [markerState, setMarkerState] = useState([]);
+ 
     const [zoom, setZoom] = useState(3.8);
     const zoomIntoMarkerHandler = (coordinates) => {
-      console.log("clicked");
+      // console.log("clicked");
       setZoom(zoom + 1);
       setPosition({ lat: coordinates.lat, lng: coordinates.long });
     };
-    // useEffect(() => {
-    //   setZoom(zoom+1);
-    //   setZooming(false);
-    // }, [zooming]);
-    let count = 0;
+
 
     const renderMarkers = () => {
       if (props.trips) {
@@ -129,7 +125,7 @@ const CustomSkinMap = withScriptjs(
   })
 );
 export default function Maps(props) {
-  console.log("insidemaps", props.trips);
+  // console.log("insidemaps", props.trips);
   return (
     <CustomSkinMap
       googleMapURL='https://maps.googleapis.com/maps/api/js?key=AIzaSyAayUREzm6gydcCBnHzTXcnN4PsneoLays&libraries=places'

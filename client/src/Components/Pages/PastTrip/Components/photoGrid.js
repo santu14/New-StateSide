@@ -4,7 +4,7 @@ import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 // import tileData from './tileData';
 
-import { el } from "date-fns/locale";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,7 +29,7 @@ if(props.photos){
       <GridList cellHeight={160} className={classes.gridList} cols={3}>
         {props.photos.map((photo) => (
           <GridListTile key={photo.photo} cols={ 1}>
-            <img src={photo.photo} alt={"photo"} />
+            <img src={photo.photo} alt={"past trip img"} />
           </GridListTile>
         ))}
       </GridList>

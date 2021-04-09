@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import {
   makeStyles,
   createMuiTheme,
@@ -15,7 +15,7 @@ import BudgetTable from "./Components/BudgetTable";
 import CategorySelector from "./Components/CategorySelector";
 import clsx from "clsx";
 import Button from "@material-ui/core/Button";
-import { Route, Redirect, Link } from "react-router-dom";
+import { Route} from "react-router-dom";
 import ImgGrid from "./Components/ImgGrid";
 import UploadBtn from "./Components/ImgGrid/UploadButton";
 import Title from "../../Title";
@@ -145,7 +145,7 @@ const initialCurrentTrip= {
 
   useEffect(() => {
     API.getUser(userID).then((user) => {
-      console.log("current trip userid:", userID);
+     
       setTrips(user.data.trips);
     });
   }, []);
@@ -155,17 +155,17 @@ const initialCurrentTrip= {
   }, [trips]);
 
   useEffect(() => {
-    console.log("current: ", currentTrip);
+    // console.log("current: ", currentTrip);
     subtractExpensesFromBudget(currentTrip.expenses);
     setActivities(currentTrip.activities);
     setCurrentBudget(currentTrip.budget - expensesTotal)
   }, [currentTrip]);
 
   useEffect(() => {
-    console.log("expenses: ", expensesTotal);
-    console.log(typeof expensesTotal);
-    console.log("budget: ", currentTrip.budget);
-    console.log(typeof currentTrip.budget);
+    // console.log("expenses: ", expensesTotal);
+    // console.log(typeof expensesTotal);
+    // console.log("budget: ", currentTrip.budget);
+    // console.log(typeof currentTrip.budget);
     setCurrentBudget(currentTrip.budget - expensesTotal);
   }, [expensesTotal]);
 
@@ -189,7 +189,7 @@ const initialCurrentTrip= {
               _v,
               _id,
             } = response.data;
-            console.log(response.data);
+           
             function crunchNumbers(array) {
               const object = {
                 food: 0,
@@ -205,7 +205,7 @@ const initialCurrentTrip= {
               });
               return object;
             }
-            console.log({budget})
+            // console.log({budget})
             setCurrentTrip({
               ...currentTrip,
               activities,
@@ -225,7 +225,7 @@ const initialCurrentTrip= {
             });
           });
         }
-        console.log("current trip: ", trip);
+        // console.log("current trip: ", trip);
       });
     }
     };
@@ -237,17 +237,17 @@ const initialCurrentTrip= {
 
   const handleActivityInputChange = ({ target: { name, value } }) =>
     setActivity({ ...activity, [name]: value });
-  console.log(activity, currentTrip._id);
+
 
   const subtractExpensesFromBudget = async (expenses) => {
     if (expenses) {
       let count = 0;
       await expenses.forEach((expense) => {
         count = count + expense.expense;
-        console.log("total:", count, "expense: ", expense.expense);
+        // console.log("total:", count, "expense: ", expense.expense);
       });
       setExpensesTotal(count);
-      console.log("total expense: ", count);
+      // console.log("total expense: ", count);
       return;
     }
     setExpensesTotal(0);

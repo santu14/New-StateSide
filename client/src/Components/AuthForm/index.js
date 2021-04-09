@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import API from "../../utils/API";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
@@ -61,10 +61,10 @@ const AuthForm = (props) => {
     e.preventDefault();
     const { email, password } = formState;
     setHelperText(initialHelperState);
-    console.log({ email: email, password: password });
+    // console.log({ email: email, password: password });
 
     API.signIn({ email: email, password: password }).then(({ data }) => {
-        console.log("data: ", data);
+        // console.log("data: ", data);
         errorHandler(data);
         checkAuth();
     });
@@ -75,7 +75,7 @@ const AuthForm = (props) => {
     e.preventDefault();
     const { firstName, lastName, email, password, password_confirmation } = formState;
     setHelperText(initialHelperState);
-    console.log({ email: email, password: password });
+    // console.log({ email: email, password: password });
 
     API.signUp({
       firstName: firstName,
@@ -84,7 +84,7 @@ const AuthForm = (props) => {
       password: password,
       password_confirmation: password_confirmation,
     }).then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       errorHandler(res.data);
       checkAuth();
       
@@ -114,8 +114,8 @@ const AuthForm = (props) => {
   
   const errorHandler =  (res) => {
     const  error =  res.errors;
-    console.log("current errors: ", error);
-    console.log("current text: ", helperText);
+    // console.log("current errors: ", error);
+    // console.log("current text: ", helperText);
     // if we have errors we push them to our helperText state
     if (error){
         error.forEach(err => {
