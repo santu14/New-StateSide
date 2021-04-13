@@ -22,13 +22,16 @@ SO THAT I can keep an efficient log of where I have been and what I have done
 
 ## Table of Contents
 
-
+* [Media](#media)
 * [Installation](#installation)
 * [License](#license)
-* [Questions](#questions)
 * [Contributors](#contributors)
-* [Media](#media)
 
+
+# Media
+
+![](client/public/stateside-capture1.JPG)
+![](client/public/stateside-capture2.JPG)
 # Installation
 
 To run this application locally, in the event the deployed page fails, please do the following;
@@ -41,11 +44,6 @@ Following downloading the repository, enter into your terminal:
 # License
 
 Application working under an MIT license
-
-# Questions
-
-Reach out to me via email regarding any questions or concerns with this project:
-- chandler.lowrance1@gmail.com
 
 
 # Contributors
@@ -70,7 +68,3 @@ Reach out to me via email regarding any questions or concerns with this project:
 
 [<img src="https://avatars3.githubusercontent.com/u/23424739?s=400&u=79507a3a1a2a3de915aa1997a4575b435a425fc4&v=4" width="100px;"/><br /><sub><b>Santiago Solana</b></sub>](https://github.com/santu14)<br />[💻](https://github.com/santu14?tab=repositories "Repositories")
 
-# Media
-
-![](client/public/stateside-capture1.JPG)
-![](client/public/stateside-capture2.JPG)
